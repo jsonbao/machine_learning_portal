@@ -14,7 +14,7 @@ class LearningTopic extends Model {
 	];
 
 	//eloquent relationships
-	public function learning_materials() {
+	public function materials() {
         return $this->hasMany(LearningMaterial::class);
     }
 

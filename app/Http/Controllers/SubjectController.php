@@ -218,7 +218,7 @@ class SubjectController extends Controller
 
             $subject = $this->subjectDal->GetSubjectById($id);
             
-            if(is_null($subject)) {
+            if(count($subject) == 0) {
                 return Response::json([
                     'message' => 'Invalid request, subject with id ' . $id . ' not found.' 
                 ], 400); 

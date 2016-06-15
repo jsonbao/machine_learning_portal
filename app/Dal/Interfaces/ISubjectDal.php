@@ -16,5 +16,5 @@ interface ISubjectDal {
 
 	public function RemoveTopicsFromSubject(Subject $subject, $topicIds);
 
-	public function RemoveSubject($subjectId);	
+	public function DeleteSubject($subjectId);	
 }

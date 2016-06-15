@@ -50,7 +50,7 @@ class LearningTopicController extends Controller
         try {
             $topic = $this->learningTopicDal->GetTopicById($id);
 
-            if(is_null($topic)) {
+            if(count($topic) == 0) {
                 return Response::json([
                     'message' => 'Topic with id ' . $id . ' not found'
                 ], 404); 
@@ -218,7 +218,7 @@ class LearningTopicController extends Controller
 
             $topic = $this->learningTopicDal->GetTopicById($id);
 
-            if(is_null($topic)) {
+            if(count($topic) == 0) {
                 return Response::json([
                     'message' => 'Invalid request, topic with id ' . $id . ' not found.' 
                 ], 400); 
