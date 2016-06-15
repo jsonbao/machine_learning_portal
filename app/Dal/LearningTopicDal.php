@@ -12,7 +12,7 @@ class LearningTopicDal implements ILearningTopicDal {
 	}
 
     public function GetTopicById($id) {
-    	return LearningTopic::find($id);
+    	return LearningTopic::where('id', $id)->get();
     }
 
     public function AddNewTopic(LearningTopic $topic) {

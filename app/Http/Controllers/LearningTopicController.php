@@ -52,7 +52,7 @@ class LearningTopicController extends Controller
 
             if(is_null($topic)) {
                 return Response::json([
-                    'message' => 'No topic found'
+                    'message' => 'Topic with id ' . $id . ' not found'
                 ], 404); 
             }
 
@@ -109,7 +109,7 @@ class LearningTopicController extends Controller
 
             return Response::json([
                 'message' => 'New topic added.',
-                'topic' => $topic
+                'topic' => $addedTopic
             ], 200);
 
         } catch (Exception $e) {
@@ -152,10 +152,10 @@ class LearningTopicController extends Controller
                 }     
             }
             
-            $this->learningTopicDal->AddSubjectsToTopic($topic, $subjectIds);
+            $this->learningTopicDal->AddSubjectsToTopic(LearningTopic::find($topicId), $subjectIds);
             
             return Response::json([
-                'message' => 'Subject added.'
+                'message' => 'Subjects added.'
             ], 200);
 
             
@@ -199,10 +199,10 @@ class LearningTopicController extends Controller
                 }     
             }
             
-            $this->learningTopicDal->RemoveSubjectsFromTopic($topic, $subjectIds);
+            $this->learningTopicDal->RemoveSubjectsFromTopic(LearningTopic::find($topicId), $subjectIds);
 
             return Response::json([
-                'message' => 'Subject removed.'
+                'message' => 'Subjects removed.'
             ], 200);
 
             
@@ -220,7 +220,7 @@ class LearningTopicController extends Controller
 
             if(is_null($topic)) {
                 return Response::json([
-                    'message' => 'Invalid request.'
+                    'message' => 'Invalid request, topic with id ' . $id . ' not found.' 
                 ], 400); 
             }
 
